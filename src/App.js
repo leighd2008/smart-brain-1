@@ -14,7 +14,7 @@ import "./App.css";
 const particlesOptions = {
   particles: {
     number: {
-      value: 30,
+      value: 100,
       density: {
         enable: true,
         value_area: 800
@@ -27,15 +27,17 @@ const initialState = {
   input: "",
   imageUrl: "",
   boxes: [],
-  route: "home",
-  isSignedIn: true,
+  route: "signin",
+  isSignedIn: false,
   isProfileOpen: false,
   user: {
     id: "",
     name: "",
     email: "",
     entries: 0,
-    joined: ""
+    joined: "",
+    pet: '',
+    age: ''
   }
 };
 
@@ -146,7 +148,12 @@ class App extends Component {
         />
         {isProfileOpen &&
           <Modal>
-            <Profile isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} />
+            <Profile 
+              user={this.state.user} 
+              isProfileOpen={isProfileOpen} 
+              toggleModal={this.toggleModal} 
+              loadUser={this.loadUser}
+            />
           </Modal>
         }
         {route === "home" ? (
