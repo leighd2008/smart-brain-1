@@ -37,6 +37,7 @@ class  Profile extends React.Component {
       body: JSON.stringify({ formInput: data })
     }).then(resp => {
       if (resp.status === 200 || resp.status === 304) {
+        console.log(data)
         this.props.toggleModal();
         this.props.loadUser({ ...this.props.user, ...data });
       }
@@ -53,7 +54,7 @@ class  Profile extends React.Component {
             <img
               src="http://tachyons.io/img/logo.jpg"
               className="h3 w3 dib" alt="avatar" />
-            <h1>{this.state.name}</h1>
+            <h1>{`My name is ${this.state.name} I am ${this.state.age} years old and I have a ${this.state.pet}`}</h1>
             <h4>{`Images Submitted: ${user.entries}`}</h4>
             <p>{`Member since: ${new Date(user.joined).toLocaleDateString()}`}</p>
             <hr />
